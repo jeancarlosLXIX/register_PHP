@@ -1,0 +1,13 @@
+INSERT INTO direcciones(siglas, nombre) VALUES('DE', 'Direccion Ejecutiva'),
+('DAF','Direccion Administrativa Y Financiera'),
+('DC','Direccion De Comunicaciones'),
+('DFR','Direccion De Fiscalizacion'),
+('DOCSR','Direccion Operativa De Sistemas De Riego'),
+('DPDI','Direccion De Planificacion Y Desarrollo Institucional'),
+('DJ','Direccion Juridica'),
+('DOEC','Direccion Operativa De Ejecucion Y Cumplimiento'),
+('DPDH','Direccion De Planificacion Y Desarrollo Hidrico'),
+('DPO','Direccion De Proyectos Y Obras'),
+('DRH','Recursos Humanos'),
+('DTIC','Direccion De Tecnologia y comunicacion'),
+('SUB','Sub-Direccion')

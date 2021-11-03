@@ -1,0 +1,6 @@
+Enhence the code to better readability/performence, again
+Error handling 
+
+to considere:
+in the error field if the data introduce by the user is codigo or serial safe in variables i reload
+the add page with those values in it
