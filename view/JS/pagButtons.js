@@ -7,3 +7,24 @@ aTags.forEach(e=>{
         e.className = "active"
     }
 })
+
+//COLOR
+document.querySelectorAll('tr > td').forEach(element => {
+    console.log(element,'aqui');
+    switch (element.textContent) {
+        case 'Nuevo':
+            changeColor(element, '#90EE90')
+            break;
+        case 'Descargado':
+            changeColor(element, '#FF7F7F')
+            break;
+        case 'Usado':
+            changeColor(element, '#FFFF66')
+            break;
+    
+    }
+});
+
+function changeColor(element,color){
+    element.parentElement.style.backgroundColor = color
+}

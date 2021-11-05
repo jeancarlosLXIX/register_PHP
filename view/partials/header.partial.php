@@ -8,9 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $_SESSION['title']; ?></title>
     <link rel="stylesheet" href="style/style.css">
-    <script src="./JS/selects.js" defer></script>
+    <script src="JS/selects.js" defer></script>
 </head>
 <body>
+
 <ul class="nav">
         <li class="nav-item">
           <a class="nav-link" href="#"><?php echo "$_SESSION[name] $_SESSION[lastname]"; ?></a>
@@ -19,10 +20,10 @@
           <a class="nav-link" href="index.php">Agregar equipos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="showPC.php?page=1">Ver equipos</a>
+          <a class="nav-link" href="showPC.php">Ver equipos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout.php">salir</a>
+          <a class="nav-link" href="../model/send.php">salir</a>
         </li>
       </ul>
       <div class="line"></div>

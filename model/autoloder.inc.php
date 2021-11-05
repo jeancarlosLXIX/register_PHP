@@ -4,7 +4,7 @@ spl_autoload_register('myAutoloader');
 
 function myAutoloader($className){
 
-    $fullPath = __DIR__."/../../controller/$className.class.php";
+    $fullPath = __DIR__."/$className.class.php";
 
     if(!file_exists($fullPath)) {
         echo "Workingn't";

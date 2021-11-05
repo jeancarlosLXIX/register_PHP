@@ -1,14 +1,15 @@
 <?php
-  require_once "./includes/session.inc.php";
-  require_once "./includes/autoloder.inc.php";
+  require_once __DIR__."/../model/autoloder.inc.php";
+  require_once __DIR__."/../model/session.inc.php";
   $_SESSION['title'] = "Agregar equipo";
 ?>
     
     <!-- ADDING HEADER/NAV -->
-    <?php require_once "./includes/partials/header.partial.php"; ?>
+    <?php require_once __DIR__."./partials/header.partial.php"; ?>
+    
 
     <div class="content">
-    <form action="./send.php" method="post">
+    <form action="../model/send.php" method="post">
 
         <!--DIRECCIONES-->
         <?php $obj = new PrintClass();
@@ -174,4 +175,4 @@
 </div>
 
 <!-- ADDING FOOTER -->
-<?php require_once "./includes/partials/footer.partial.php"; ?>
+<?php require_once "./partials/footer.partial.php"; ?>

@@ -4,6 +4,7 @@ CREATE TABLE usuarios(
 	lastname VARCHAR(50) NOT NULL,
     password VARCHAR(150) NOT NULL,
 	user VARCHAR(15) UNIQUE
+	level VARCHAR(5) DEFAULT 'B'
 );
 
 CREATE TABLE bienes(

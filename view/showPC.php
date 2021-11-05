@@ -1,7 +1,7 @@
 <?php
 #error_reporting(E_ERROR | E_PARSE);
-require_once "./includes/session.inc.php"; #Check if the user is log in
-require_once "../controller/dbconection.php"; #db connection
+require_once __DIR__."/../model/session.inc.php"; #Check if the user is log in
+require_once __DIR__."/../model/dbconection.php"; #db connection
 $_SESSION['title'] = "Mostrar equipos"; #title page
 $i=0;
 $opt = $_GET['opt'] ?? '';
@@ -14,7 +14,7 @@ if (isset($_GET['page'])) {
     $page = 1;
 }
 
-
+//get
 //number of pages 
 $num_per_pages = 10;
 
@@ -46,7 +46,7 @@ if ($opt != '') {
     }
 ?>
     <!-- ADDING NAVBAR/HEADER -->
-    <?php require_once "./includes/partials/header.partial.php"; ?>
+    <?php require_once "./partials/header.partial.php"; ?>
 
     <form action="<?php echo $_SERVER['PHP_SELF']?>" style="margin-top: 15px;">
         
@@ -122,6 +122,6 @@ if ($opt != '') {
         }
         ?>
         </div>
-     <script src="js/pagButtons.js"></script>
+     <script src="./js/pagButtons.js"></script>
 </body>
 </html>
