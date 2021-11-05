@@ -1,15 +1,14 @@
 <?php
 
 class Query {
-    private $host = "127.0.0.1";
-    private $user = "root";
-    private $pwd = "";
-    private $dbName = "indrhi";
+    private $host = "us-cdbr-east-04.cleardb.com";
+    private $user = "bb5e05959a0bb2";
+    private $pwd = "73697945";
+    private $dbName = "heroku_d66806d4df58b5d";
 
     public $conn = null;
 
-    public function __construct()
-    {
+    public function __construct(){
         //connection
         $this->conn = mysqli_connect($this->host, $this->user, $this->pwd, $this->dbName);
         
@@ -63,8 +62,9 @@ class Query {
 
         //ojo
 	$sql = "SELECT * FROM usuarios WHERE user='$userName'";
-
     $result = $this->conn->query($sql);
+ 
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
     }
