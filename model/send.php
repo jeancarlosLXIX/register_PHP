@@ -1,8 +1,17 @@
 <?php
-include_once __DIR__."/includes/autoloder.inc.php";
+include_once "./autoloder.inc.php";
 session_start(); #it's importan to have this here
 $obj = new Query();
 
+// var_dump($_POST);
+// die();
+
+#close session
+if(count($_POST) === 0){
+    session_destroy();
+    header("Location: ../index.html");
+    
+}
 
 foreach ($_POST as $key => $value) {
         switch ($key) {
@@ -12,7 +21,7 @@ foreach ($_POST as $key => $value) {
             case 'addPC' :
                 //Working
                 $obj->insertD();
-                header("Location: index.php");
+                header("Location: ../view/index.php");
                 exit();
                 break ;
 

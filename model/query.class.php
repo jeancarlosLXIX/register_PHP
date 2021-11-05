@@ -31,12 +31,9 @@ class Query {
             entregado_en(direcciones, departamentos, item_codigo, comentarios) 
             VALUES('$_POST[direccion]','$_POST[departamento]','$codigo', '$_POST[comments]');";
 
-            if ($this->conn->query($sql) === TRUE) {
-                
-                header("Location: index.php");
-            }else {
+            if ($this->conn->query($sql) !== TRUE) {
                 echo "Lo mismo: " . $sql . "<br>" . $this->conn->error;
-                }
+            }
 
             } else {
         echo "Error: " . $sql . "<br>" . $this->conn->error;
@@ -76,7 +73,7 @@ class Query {
 		$_SESSION['name'] = $row['name'];
 		$_SESSION['lastname'] = $row['lastname'];
 		$_SESSION['user'] = $row['user'];
-		header("Location: index.php");
+		header("Location: ../view/index.php");
     
     }
 }
