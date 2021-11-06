@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",true);
   require_once __DIR__."/../model/autoloder.inc.php";
   require_once __DIR__."/../model/session.inc.php";
   $_SESSION['title'] = "Agregar equipo";
