@@ -17,7 +17,7 @@
           <a class="nav-link" href="#"><?php echo "$_SESSION[name] $_SESSION[lastname]"; ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Agregar equipos</a>
+          <a class="nav-link" href="add.php">Agregar equipos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="showPC.php">Ver equipos</a>

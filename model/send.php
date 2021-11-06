@@ -21,7 +21,7 @@ foreach ($_POST as $key => $value) {
             case 'addPC' :
                 //Working
                 $obj->insertD();
-                header("Location: ../view/index.php");
+                header("Location: ../view/add.php");
                 exit();
                 break ;
 
