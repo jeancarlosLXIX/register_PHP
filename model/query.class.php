@@ -78,7 +78,7 @@ class Query {
 		$_SESSION['name'] = $row['name'];
 		$_SESSION['lastname'] = $row['lastname'];
 		$_SESSION['user'] = $row['user'];
-		header("Location: ../index.php");
+		header("Location: ../view/index.php");
     
     }
 }
