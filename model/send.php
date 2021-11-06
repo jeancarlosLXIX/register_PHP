@@ -1,5 +1,5 @@
 <?php
-include_once "./autoloder.inc.php";
+include_once "./query.class.php";
 session_start(); #it's importan to have this here
 $obj = new Query();
 
