@@ -69,6 +69,8 @@ class Query {
             $row = $result->fetch_assoc();
     }
 
+    var_dump($row);
+    
     if (password_verify($password, $row['password'])) {
 		$_SESSION['name'] = $row['name'];
 		$_SESSION['lastname'] = $row['lastname'];
