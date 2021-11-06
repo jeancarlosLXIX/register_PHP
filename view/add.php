@@ -1,6 +1,6 @@
 <?php
 ini_set("display_errors",true);
-  require_once "./../model/autoloder.inc.php";
+  require_once "../model/printClass.class.php";
   require_once "./../model/session.inc.php";
   $_SESSION['title'] = "Agregar equipo";
 ?>
