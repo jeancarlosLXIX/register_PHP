@@ -6,7 +6,7 @@ ini_set("display_errors",true);
 ?>
     
     <!-- ADDING HEADER/NAV -->
-    <?php require_once __DIR__."./partials/header.partial.php"; ?>
+    <?php require_once "./partials/header.partial.php"; ?>
     
 
     <div class="content">
