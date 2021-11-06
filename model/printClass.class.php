@@ -9,10 +9,10 @@
 
 
 class PrintClass {
-    private $host = "127.0.0.1";
-    private $user = "root";
-    private $pwd = "";
-    private $dbName = "indrhi";
+    private $host = "us-cdbr-east-04.cleardb.com";
+    private $user = "bb5e05959a0bb2";
+    private $pwd = "73697945";
+    private $dbName = "heroku_d66806d4df58b5d";
     
 
     public function __construct()
