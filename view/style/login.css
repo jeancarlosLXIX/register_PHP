@@ -1,0 +1,34 @@
+.gradient-custom-2 {
+  background: linear-gradient(25deg, #ffffff 50%, #212e7f 50%);
+}
+
+.gradient-custom-2 h4,p {
+  color: black;
+  font-family: "URW Chancery L", cursive;
+  
+}
+
+.small{
+    font-size: 18px;
+}
+
+img{
+  border-radius: 50%;
+  border-width: 1px;
+  border-color: red;
+  padding: 5px;
+  width: 150px;
+}
+
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}

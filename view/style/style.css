@@ -2,9 +2,9 @@
     --primary-clr: rgb(0, 26, 255);
 }
 
-body{
+/* body{
     background-color: #E5E5E5;
-}
+} */
 
 th, td{  /* line between*/
     border: 1px solid #dddddd;
