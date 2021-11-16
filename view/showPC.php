@@ -2,10 +2,10 @@
 #error_reporting(E_ERROR | E_PARSE);
 require_once __DIR__."/../model/session.inc.php"; #Check if the user is log in
 require_once __DIR__."/../model/dbconection.php"; #db connection
-$_SESSION['title'] = "Mostrar equipos"; #title page
 $i=0;
-$opt = $_GET['opt'] ?? '';
+$category = $_GET['category'] ?? '';
 $estado = $_GET['estado'] ?? '';
+$place = $_GET['direccion'] ?? '';
 
 //pagination
 if (isset($_GET['page'])) {
@@ -14,45 +14,104 @@ if (isset($_GET['page'])) {
     $page = 1;
 }
 
-//get
+
 //number of pages 
 $num_per_pages = 10;
 
 //where it'll start
 $start_from = ($page-1)*$num_per_pages;
 
-if ($opt != '') {
+$sql = sqlReturn($place,$category,$estado) . " LIMIT  $start_from,$num_per_pages";
 
-    $restante = $estado != ''
-    //if it's different to an empty string it'll add extra info to the query 
-    ? "AND estado='$estado' LIMIT  $start_from,$num_per_pages" 
-    : "LIMIT  $start_from,$num_per_pages";
+$result = $mysqli->query($sql);
 
-    $result = $mysqli->query("SELECT * FROM bienes, entregado_en
-    WHERE (bienes.codigo = entregado_en.item_codigo)AND 
-    tipo = '$opt'". $restante); 
 
-    }else if($estado != '') {
-        $restante = $opt != ''
-        ? "AND tipo='$opt' LIMIT  $start_from,$num_per_pages" 
-        : "LIMIT  $start_from,$num_per_pages";
 
-        $result = $mysqli->query("SELECT * FROM bienes, entregado_en
-        WHERE (bienes.codigo = entregado_en.item_codigo)AND 
-        estado = '$estado'". $restante);
-    }else{
-        $result = $mysqli->query("SELECT * FROM bienes, entregado_en
-        WHERE bienes.codigo = entregado_en.item_codigo LIMIT $start_from,$num_per_pages");
+    function sqlReturn($lugar,$categoria, $est): string{
+        $counter = 0;
+
+
+        $counter += $categoria != '' ? 1 : 0;
+        $counter += $est != '' ? 1 : 0;
+        $counter += $lugar != '' ? 1 : 0;
+
+        if($counter === 3){
+        return "SELECT * FROM bienes, entregado_en 
+        WHERE (bienes.codigo = entregado_en.item_codigo) AND 
+        (direcciones = '$lugar' and estado='$est' and tipo = '$categoria')";}
+
+        if($counter === 0){
+            return "SELECT * FROM bienes, entregado_en
+            WHERE bienes.codigo = entregado_en.item_codigo";
+        }
+
+        if($lugar != ''){
+
+        return validaciones($lugar,$categoria,$est,'direcciones','tipo','estado');
+
+        }  else if($categoria != ''){
+            
+        return validaciones($categoria,$lugar,$est,'tipo','direcciones','estado');
+
+        } else {
+            return validaciones($est,$lugar,$categoria,'estado','direcciones','tipo');
+        }
+        
     }
+
+     function validaciones($principal, $complemento1, $complemento2,$col1, $col2,$col3): string{
+        $nivel =1;
+
+            if($complemento1 != '' && $complemento2 === '')
+            $nivel = 2;
+        
+            if($complemento1 === '' && $complemento2 != '')
+            $nivel = 3;
+        
+
+        
+        switch ($nivel) {
+            case 1:
+                # if($principal != '' && ($complemento1==='' && $complemento2 === ''))
+                return "SELECT * FROM bienes, entregado_en 
+                WHERE bienes.codigo = entregado_en.item_codigo AND
+                $col1 = '$principal'";
+                break;
+
+            case 2:
+                # if($principal != '' && ($complemento1==='' && $complemento2 === ''))
+                return "SELECT * FROM bienes, entregado_en 
+                WHERE bienes.codigo = entregado_en.item_codigo AND
+                $col1 = '$principal' AND $col2='$complemento1'";
+                break;
+
+            case 3:
+                # if($principal != '' && ($complemento1==='' && $complemento2 != ''))
+                return "SELECT * FROM bienes, entregado_en 
+                WHERE bienes.codigo = entregado_en.item_codigo AND
+                $col1 = '$principal' AND $col3='$complemento2'";
+                break;
+            
+            default:
+                return "Y esa basura que hiciste?";
+                break;
+        }
+        
+        }
 ?>
     <!-- ADDING NAVBAR/HEADER -->
     <?php require_once "./partials/header.partial.php"; ?>
 
     <form action="<?php echo $_SERVER['PHP_SELF']?>" style="margin-top: 15px;">
-        
-            <select name="opt" id="category" class="form-select" style="width: 10%; display: inline;">
+        <?php
+        require_once "../pruebas/localPrint.php";
+        $obj = new PrintClass();
+        $obj->direccionesOptions("DIRECCIONES");
+        ?>
+            <select name="category" class="form-select" style="width: 10%; display: inline;">
                 <option value="" hidden>Categoria</option>
                 <option value="desktop">Desktop</option>
+                <option value="laptop">Laptop</option>
                 <option value="impresora">impresora</option>
                 <option value="ups">UPS</option>
                 <option value="monitor">Monitor</option>
@@ -109,16 +168,16 @@ if ($opt != '') {
         
         //previos button
         if ($page>1) {
-            echo "<a href='showPC.php?page=".($page-1) . "&opt=$opt&estado=$estado'class='btn btn-danger'>Previos</a>";
+            echo "<a href='showPC.php?page=".($page-1) . "&category=$category&estado=$estado&direccion=$place'class='btn btn-danger'>Previos</a>";
         }
 
         for ($i=1; $i <= $total_pages; $i++) { 
-            echo "<a href='showPC.php?page=$i&opt=$opt&estado=$estado' class='btn m-2' data-nav='$i'>$i</a>";
+            echo "<a href='showPC.php?page=$i&category=$category&estado=$estado&direccion=$place' class='btn m-2' data-nav='$i'>$i</a>";
         }
 
         //next btn
         if ($i>$page) {
-            echo "<a href='showPC.php?page=".($page+1) . "&opt=$opt&estado=$estado'class='btn btn-danger'>Next</a>";
+            echo "<a href='showPC.php?page=".($page+1) . "&category=$category&estado=$estado&direccion=$place'class='btn btn-danger'>Next</a>";
         }
         ?>
         </div>
