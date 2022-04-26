@@ -171,7 +171,7 @@ ini_set("display_errors",true);
         <br>  
         <div class="texto alert alert-danger" role="alert" style="display:none;">Limite de caracteres excedido</div> 
         <br><br> 
-            <input type="submit"  name="addPC" value="Enviar" class="btn btn-outline-primary">
+            <input type="submit"  name="addPC" value="Enviar" class="myButton">
 </form>
 </div>
 

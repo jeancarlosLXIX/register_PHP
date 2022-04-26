@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto&display=swap');
 .gradient-custom-2 {
-  background: linear-gradient(25deg, #ee212b 50%, #212e7f 50%);
+  background-image: conic-gradient(#7fba00 0deg, #7fba00 90deg, #ffb900 90deg, #ffb900 180deg, #00a4ef 180deg, #00a4ef 270deg, #f25022 270deg);
 }
 
+body{
+  font-family: 'Josefin Sans', Courier, monospace;
+}
+
+
 .gradient-custom-2 h4,p {
-  color: rgb(255, 255, 255);
-  font-family: 'Courier New', Courier, monospace;
+  color: rgb(0, 0, 0);
+  /* text-shadow: 2px 2px #000; */
   
 }
 
@@ -20,15 +26,26 @@ img{
   width: 150px;
 }
 
+#glass{
+  background: rgba(248, 245, 245, 0.55);
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
 
-@media (min-width: 768px) {
+
+@media (max-width: 769px) {
   .gradient-form {
     height: 100vh !important;
   }
-}
-@media (min-width: 769px) {
+
   .gradient-custom-2 {
     border-top-right-radius: .3rem;
     border-bottom-right-radius: .3rem;
+  }
+
+  #glass{
+    border-radius: 0px;
   }
 }
